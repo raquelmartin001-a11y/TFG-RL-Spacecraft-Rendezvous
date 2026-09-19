@@ -73,35 +73,35 @@ plt.show()
 # --------------------------------------------------------------------
 # 3. EVALUACIÓN VISUAL (10 episodios)
 # --------------------------------------------------------------------
-#env_render = gym.make('CartPole-v1', render_mode="human")
+env_render = gym.make('CartPole-v1', render_mode="human")
 
-#episodes = 10
-#recompensa_total = 0
-#episod_exito = 0
-#t_total = 0
+episodes = 10
+recompensa_total = 0
+episod_exito = 0
+t_total = 0
 
-#for episode in range(1, episodes + 1):
-#    obs, _ = env_render.reset()
-#    env_render.render()
-#    terminated = False
-#    truncated = False
-#    score = 0
-#    while not (terminated or truncated):
-#        action, _ = model.predict(obs, deterministic=True)
-#        obs, reward, terminated, truncated, info = env_render.step(action)
-#        score += reward
-#        env_render.render()
-#    if score >= 475:
-#        episod_exito += 1
-#    print(f"Episode: {episode}, Score: {score}")
-#    recompensa_total += score
+for episode in range(1, episodes + 1):
+    obs, _ = env_render.reset()
+    env_render.render()
+    terminated = False
+    truncated = False
+    score = 0
+    while not (terminated or truncated):
+        action, _ = model.predict(obs, deterministic=True)
+        obs, reward, terminated, truncated, info = env_render.step(action)
+        score += reward
+        env_render.render()
+    if score >= 475:
+        episod_exito += 1
+    print(f"Episode: {episode}, Score: {score}")
+    recompensa_total += score
 
-#env_render.close()
-#print("---------------------------------------------------")
-#print(f"Recompensa total media en {episodes} episodios: {recompensa_total/episodes}")
-#print(f"Episodios exitosos (score>=475): {episod_exito/episodes*100} %")
-#print(f"Tiempo total de simulación: {end_time - start_time:.2f} segundos")
-#print("---------------------------------------------------")
+env_render.close()
+print("---------------------------------------------------")
+print(f"Recompensa total media en {episodes} episodios: {recompensa_total/episodes}")
+print(f"Episodios exitosos (score>=475): {episod_exito/episodes*100} %")
+print(f"Tiempo total de simulación: {end_time - start_time:.2f} segundos")
+print("---------------------------------------------------")
 
 # --------------------------------------------------------------------
 # 4. EVALUACIÓN ROBUSTA: 100 episodios con evaluate_policy + histograma
