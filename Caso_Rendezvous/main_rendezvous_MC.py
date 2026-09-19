@@ -171,6 +171,14 @@ for i in range(NSTEPS):
     e_los_nom.append(max_viol)
     cumulative_reward += reward
 
+# --- Reactivar aleatoriedad para las simulaciones de Monte Carlo ---
+if stochastic:
+    env0.unwrapped.stochastic = True
+if random_obs:
+    env0.unwrapped.random_obs = True
+if randomIC:
+    env0.unwrapped.randomIC = True
+
 # --- Simulaciones Monte Carlo ---
 Nsim = 1000
 dr_vec = []; dv_vec = []; Dvtot_vec = []; rew_vec = []
